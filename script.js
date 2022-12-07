@@ -26,7 +26,7 @@ button.addEventListener('click', () => {
       highScoreSpan.textContent = highScore;
     }
     // if guess is too low
-  } else if (guessValue !== secretNumber) {
+  } else if (secretNumber !== guessValue) {
     if (score > 1) {
       message.textContent = guessValue > secretNumber ? 'too high' : 'too low';
       score--;

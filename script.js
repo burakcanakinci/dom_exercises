@@ -7,22 +7,36 @@ const scoreSpan = document.querySelector('.score');
 const message = document.querySelector('.message');
 const body = document.querySelector('body');
 let score = 20;
-number.textContent = secretNumber;
+
 
 button.addEventListener('click', () => {
   // number.textContent = guess;
   const guessValue = Number(guess.value);
   console.log(guessValue)
+  // if win
   if (secretNumber === guessValue) {
+    number.textContent = secretNumber;
     message.textContent = 'nediünyia!';
     body.style.backgroundColor = 'green';
+    // if guess is too low
   } else if ( secretNumber > guessValue) {
-    message.textContent = 'too low';
-    score--;
-    scoreSpan.textContent = score;
+    if (score > 1) {
+      message.textContent = 'too low';
+      score--;
+      scoreSpan.textContent = score;
+    } else {
+      scoreSpan.textContent = 0;
+      message.textContent = 'you lost :(';
+    }
+    // if guess is too high
   } else if ( secretNumber < guessValue) {
-    message.textContent = 'too high';
-    score--;
-    scoreSpan.textContent = score;
+    if (score > 1) {
+      message.textContent = 'too high';
+      score--;
+      scoreSpan.textContent = score;
+    } else {
+      scoreSpan.textContent = 0;
+      message.textContent = 'you lost :(';
+    }
   }
 })
